@@ -29,7 +29,6 @@ Overview of the DeepPARE framework.
 **Note**: The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260  <br>
              
     Code/
-    ├── Pathway data/                                     
     │   ├── KGML/                                          # Contains the code for downloading the KGML files of KEGG pathways
     │   ├── Model Interpretation.ipynb                     # Model Interpretation Based on Attention Mechanism
     │   ├── model_train.ipynb                              # Model Development and Training
