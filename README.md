@@ -19,7 +19,7 @@ Overview of the DeepPARE framework.
 ### The repository is organised as follows:<br>
     Data/
     ├── Pathway data/                                     
-    │   ├── KGML/                                          # The KGML file of the pathway
+    │   ├── KGML/                                          # The KGML files of the KEGG pathways
     │   ├── Pathway_weighted_adj.csv                       # Pathway–pathway adjacency matrix
     │   ├── pathway_adjacency.pkl                          # A dictionary is used to store the adjacency matrix of individual pathways
     ├── example_data/                                      # Example datasets for reproducing the DeepPARE
