@@ -20,30 +20,26 @@ Overview of the DeepPARE framework.
     Data/
     ├── Pathway data/                                     
     │   ├── KGML/                                          # The KGML file of the pathway
-    │   ├── Pathway_weighted_adj.csv                       # Pathway–pathway adjacency matrix.
-    │   ├── pathway_adjacency.pkl                          # A dictionary is used to store the adjacency matrix of individual pathways.
+    │   ├── Pathway_weighted_adj.csv                       # Pathway–pathway adjacency matrix
+    │   ├── pathway_adjacency.pkl                          # A dictionary is used to store the adjacency matrix of individual pathways
     ├── example_data/                                      # Example datasets for reproducing the DeepPARE
     │   ├── exp_data.csv                                   # For BRCA subtype prediction               
-    └── └── label_data.csv                                 # Sample class labels for example samples. 
+    └── └── label_data.csv                                 # Sample class labels for example samples
    
-- **Note**: The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260
+**Note**: The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260  <br>
+             
     Code/
     ├── Pathway data/                                     
     │   ├── KGML/                                          # Contains the code for downloading the KGML files of KEGG pathways
-    │   ├── Pathway_weighted_adj.csv                       # Pathway–pathway adjacency matrix.
-    │   ├── pathway_adjacency.pkl                          # A dictionary is used to store the adjacency matrix of individual pathways.
-    ├── example_data/                                      # Example datasets for reproducing the DeepPARE
-    │   ├── exp_data.csv                                   # For BRCA subtype prediction               
-    └── └── label_data.csv                                 # Sample class labels for example samples.         
+    │   ├── Model Interpretation.ipynb                     # Model Interpretation Based on Attention Mechanism
+    │   ├── model_train.ipynb                              # Model Development and Training
+    └── └── utils.py                                       # Definition of Basic Functions and Classes       
         
         
-        
-        
-        
-
+      
 ## 4. Installation
 **DeepPARE** relies on Python (version 3.12.10) environment.<br>
-- Install the necessary python packages for **DeepPARE**:<br>
+- Install the necessary Python packages for **DeepPARE**:<br>
 ```sh
 pip install numpy
 ```
