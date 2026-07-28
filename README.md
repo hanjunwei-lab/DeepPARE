@@ -15,12 +15,29 @@ Comprehensive benchmarking across diverse cancer-related tasks, including pan-ca
 </p>
 Overview of the DeepPARE framework.
 
-## 3. Overview
-The repository is organised as follows:<br>
-- `Code/KGML` contains code for retrieving pathway KGML files from the KEGG database;
-- `Data/Pathway data` contains adjacency matrices of **individual pathways**, the **pathway-pathway interaction** adjacency matrix, and KGML files for all pathways;
-- `Data/example_data` provides example datasets for running the DeepPARE implementation;
-- The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260
+## 3. Overview of Data and Code
+### The repository is organised as follows:<br>
+    Data/
+    ├── Pathway data/                                     
+    │   ├── KGML/                                          # The KGML file of the pathway
+    │   ├── Pathway_weighted_adj.csv                       # Pathway–pathway adjacency matrix.
+    │   ├── pathway_adjacency.pkl                          # A dictionary is used to store the adjacency matrix of individual pathways.
+    ├── example_data/                                      # Example datasets for reproducing the DeepPARE
+    │   ├── exp_data.csv                                   # For BRCA subtype prediction               
+    └── └── label_data.csv                                 # Sample class labels for example samples. 
+   
+- **Note**: The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260
+    Code/
+    ├── Pathway data/                                     
+    │   ├── KGML/                                          # Contains the code for downloading the KGML files of KEGG pathways
+    │   ├── Pathway_weighted_adj.csv                       # Pathway–pathway adjacency matrix.
+    │   ├── pathway_adjacency.pkl                          # A dictionary is used to store the adjacency matrix of individual pathways.
+    ├── example_data/                                      # Example datasets for reproducing the DeepPARE
+    │   ├── exp_data.csv                                   # For BRCA subtype prediction               
+    └── └── label_data.csv                                 # Sample class labels for example samples.         
+        
+        
+        
         
         
 
