@@ -37,14 +37,12 @@ from sklearn.metrics import (
 def load_adj_matrices(folder_path, drop_suffix=True):
     adj_dict = {}
     for filename in os.listdir(folder_path):
-        if filename.endswith(".csv"):  # 只处理csv文件
+        if filename.endswith(".csv"):  
             file_path = os.path.join(folder_path, filename)
-            adj_matrix = pd.read_csv(file_path, index_col=0)  # 如果第一列是索引
-            #adj_matrix = pd.read_csv(file_path, header=None)  # 如果没有表头
+            adj_matrix = pd.read_csv(file_path, index_col=0)  
             key = os.path.splitext(filename)[0] if drop_suffix else filename
             
-            #adj_dict[key] = adj_matrix.values  # 存为 numpy 数组
-            adj_dict[key] = adj_matrix       # 如果想保留 DataFrame
+            adj_dict[key] = adj_matrix       
             
     return adj_dict
 
@@ -143,10 +141,8 @@ def sparse_to_tuple(sparse_mx):
 class MultiHeadAttentionModule(nn.Module):
     def __init__(self, embed_dim, num_heads, dropout=0.1):
         super(MultiHeadAttentionModule, self).__init__()
-        # 定义多头注意力层
         self.multihead_attn = nn.MultiheadAttention(embed_dim=embed_dim, num_heads=num_heads, dropout=dropout,
                                                     batch_first=True)
-        # 定义层归一化和全连接层
         self.layer_norm = nn.LayerNorm(embed_dim)
         self.fc = nn.Linear(embed_dim, embed_dim)
         self.dropout = nn.Dropout(dropout)
@@ -161,13 +157,9 @@ class MultiHeadAttentionModule(nn.Module):
         if isinstance(value, torch.sparse.Tensor):
             value = value.to_dense()
 
-        # print(isinstance(value, torch.sparse.Tensor))
 
-        # query, key, value 的维度应该是 [seq_len, batch_size, embed_dim]
         attn_output, attn_weights = self.multihead_attn(query, key, value, attn_mask=mask)
-        # 跳跃连接 + 层归一化
         output = self.layer_norm(query + self.dropout(attn_output))
-        # 输出经过全连接层
         output = self.fc(output)
         return output, attn_weights
 
@@ -182,7 +174,7 @@ def logging(msg, outdir, log_fpath):
 def log_learning_rates(optimizer, outdir, filename='lr.log'):
     lr_info = " | ".join(
         f"Group {i}: {group['lr']:.4e}" 
-        for i, group in enumerate(optimizer.param_groups[:-1])  # 不包含loss_fn组
+        for i, group in enumerate(optimizer.param_groups[:-1])  
     )
     logging(f'LR after update: {lr_info}', outdir, filename)
 
@@ -201,7 +193,7 @@ def build_sample_features(big_dict, pathway_order):
 def split_dict(sample_dict, ratios=(0.8, 0.1, 0.1), seed=666):
     keys = list(sample_dict.keys())
     random.seed(seed)
-    random.shuffle(keys)  # 打乱顺序
+    random.shuffle(keys)  
     
     n = len(keys)
     n_train = int(ratios[0] * n)
@@ -218,11 +210,10 @@ def split_dict(sample_dict, ratios=(0.8, 0.1, 0.1), seed=666):
     return train_dict, val_dict, test_dict
 
 def adj_df_to_edge_index(adj_df: pd.DataFrame):
-    """把DataFrame邻接矩阵转成edge_index"""
     adj = adj_df.values
     row, col = np.nonzero(adj)
     edge_index = torch.tensor([row, col], dtype=torch.long)
-    return edge_index, adj_df.index.tolist()  # 同时返回基因名顺序
+    return edge_index, adj_df.index.tolist()  
 
 class ExpressionDataset(Dataset):
     def __init__(self, expr_df: pd.DataFrame, labels: dict):
@@ -284,8 +275,7 @@ def train(model,train_exp, train_loader, edge_index_b,edge_index_b_train, edge_w
 
 def validate(model,val_exp, val_loader, edge_index_b,edge_index_b_val, edge_weight_b,edge_weight_b_val,batchsize,loss_fn):
     model.eval()
-    with torch.no_grad():  #####禁用梯度计算
-    # ====== Test ====== #
+    with torch.no_grad():  #####
         list_val_loss  = []
         list_val_out = []
         list_val_true = []
@@ -306,7 +296,7 @@ def validate(model,val_exp, val_loader, edge_index_b,edge_index_b_val, edge_weig
 
 def test(model,test_exp, test_loader, edge_index_b,edge_index_b_test, edge_weight_b,edge_weight_b_test,batchsize,loss_fn):
     model.eval() 
-    with torch.no_grad():  #####禁用梯度计算
+    with torch.no_grad():  
         # ====== Test ====== #
         list_test_loss  = []
         list_test_out = []
