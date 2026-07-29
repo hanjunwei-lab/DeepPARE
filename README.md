@@ -1,7 +1,7 @@
 [![Current devel version: 0.1.2](https://img.shields.io/badge/devel%20version-0.1.0-blue.svg)](https://github.com/nanyuan-he/DeepPARE)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
-[![Last commit](https://img.shields.io/github/last-commit/nanyuan-he/DeepPARE.svg)](https://github.com/nanyuan-he/DeepPARE/commits/main)
+[![Last commit](https://img.shields.io/github/last-commit/hanjunwei-lab/DeepPARE.svg)](https://github.com/hanjunwei-lab/DeepPARE/commits/main)
 [![Code size](https://img.shields.io/github/languages/code-size/nanyuan-he/DeepPARE.svg)](https://github.com/nanyuan-he/DeepPARE)
 
 # DeepPARE: Interpretable Multi-Scale Pathway Representation Learning for Cancer Patient Stratification and Biomarker Discovery
@@ -26,7 +26,9 @@ Overview of the DeepPARE framework.
     │   ├── exp_data.csv                                   # Gene expression matrix of example samples             
     └── └── label_data.csv                                 # Sample class labels for example samples
    
-**Note**: The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260  <br>
+**Note**: The complete transcriptomic datasets used in this study are available on Zenodo: https://doi.org/10.5281/zenodo.21623260
+        
+          br>
              
     Code/
     │   ├── KGML/                                          # Contains the code for downloading the KGML files of KEGG pathways
